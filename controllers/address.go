@@ -53,7 +53,7 @@ func AddAddress() gin.HandlerFunc {
 		group := bson.D{
 			{Key: "$group", Value: bson.D{
 				primitive.E{Key: "_id", Value: "$address_id"},
-				{Key: "count", Value: bson.D{primitive.E{Key: "$sum", Value: "1"}}},
+				{Key: "count", Value: bson.D{primitive.E{Key: "$sum", Value: 1}}},
 			}},
 		}
 		pointcursor, err := UserCollection.Aggregate(ctx, mongo.Pipeline{match_filter, unwind, group})
